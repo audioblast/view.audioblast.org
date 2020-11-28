@@ -1,15 +1,4 @@
 <div id = "filebrowser" class="ab-view-header">
-  <div id="select-source-div" class="filebrowser-selector">
-    <label for="select-source">Source: </label>
-    <select name="select-source" id="select-source" class="select-filebrowser">
-      </select>
-  </div>
-
-  <div id="autocomplete-id-div" class="filebrowser-selector">
-    <label for="autocomplete-id">ID: </label>
-    <input id="autocomplete-id" tabindex="1" class="autocomplete-filebrowser"></input>
-  </div>
-
   <div id="computed-title-div" class="filebrowser-selector">
     <span id="computed-title"></span>
   </div>

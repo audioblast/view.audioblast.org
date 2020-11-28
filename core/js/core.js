@@ -1,3 +1,18 @@
+document.addEventListener("DOMContentLoaded", function(event) {
+  const urlParams = new URLSearchParams(window.location.search);
+  var source = null;
+  var id = null;
+
+  if (urlParams.has('source')) {
+    source = urlParams.get('source');
+  }
+  if (urlParams.has('id')) {
+    id = urlParams.get('id');
+  }
+  viewAB.setFile(source, id);
+});
+
+
 const viewAB = {
   source: "",
   id: "",
