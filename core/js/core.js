@@ -10,12 +10,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
     id = urlParams.get('id');
   }
   viewAB.setFile(source, id);
+  viewAB.addPlugin(bedoyaAB);
+  viewAB.addPlugin(biAB);
+
 });
 
 
 const viewAB = {
-  source: "",
-  id: "",
+  source: null,
+  id: null,
   renderContainer: "ab-view",
   currentT: 0,
   viewX: 10,  //x seconds fill schart
@@ -25,11 +28,11 @@ const viewAB = {
   setFile(source, id) {
     this.source = source;
     this.id = id;
+    if (this.source == null || this.id == null) {return;}
     for (var i = 0; i < Object.keys(this.plugins).length; i++) {
-      Object.values(this.plugins)[i].setFile(source, id);
+      Object.values(this.plugins)[i].setFile(this.source, this.id);
     }
   },
-
   getCurrentTime() {
     viewAB.currentTime(document.getElementById("audio-1").currentTime);
   },

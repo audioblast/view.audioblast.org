@@ -9,11 +9,11 @@
 <ul class="ulhoriz">
 <li><a onclick="viewAB.zoomOut()">-</a></li>
 <li><a onclick="viewAB.zoomIn()">+</a></li>
+<li><a onclick="viewAB.zoomFit()">[-]</a></li>
 </ul>
 </div>
 
 <div id = "spectro">
-<img id="spec-image" src="https://cdn.audioblast.org/spec.png"/>
 </div>
 
 
