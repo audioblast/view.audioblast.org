@@ -10,8 +10,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     id = urlParams.get('id');
   }
   viewAB.setFile(source, id);
-  viewAB.addPlugin(bedoyaAB);
-  viewAB.addPlugin(biAB);
+  viewAB.addPlugin(audiowaveformAB);
 
 });
 
@@ -19,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 const viewAB = {
   source: null,
   id: null,
+  duration: null,
   renderContainer: "ab-view",
   currentT: 0,
   viewX: 10,  //x seconds fill schart
@@ -33,13 +33,22 @@ const viewAB = {
       Object.values(this.plugins)[i].setFile(this.source, this.id);
     }
   },
+  setDuration(d) {
+    this.duration = d;
+    for (var i = 0; i < Object.keys(this.plugins).length; i++) {
+      if ('setDuration' in Object.values(this.plugins)[i]) {
+        Object.values(this.plugins)[i].setDuration(this.duration);
+      }
+    }
+
+  },
   getCurrentTime() {
     viewAB.currentTime(document.getElementById("audio-1").currentTime);
   },
   playStart() {
     this.intervalID = setInterval(function(){
       viewAB.currentTime(document.getElementById("audio-1").currentTime);
-    }, 20);
+    }, 0);
   },
   playStop() {
     clearInterval(this.intervalID);
@@ -51,7 +60,9 @@ const viewAB = {
   zoomOut() {
     this.setViewX(this.viewX * 2);
   },
-
+  zoomFit() {
+    this.setAxisX([0, this.duration]);
+  },
   plugins: {},
 
   addPlugin(plugin) {
@@ -68,7 +79,7 @@ const viewAB = {
 
     for (var i = 0; i < Object.keys(this.plugins).length; i++) {
       if ('setCurrentTime' in Object.values(this.plugins)[i]) {
-        Object.values(this.plugins)[i].setCurrentTime(this.currentT);
+        Object.values(this.plugins)[i].setCurrentTime(this.currentT, this.axisX, false);
       }
     }
     for (var i = 0; i < Object.keys(this.plugins).length; i++) {
@@ -124,29 +135,26 @@ const viewAB = {
 
   setAxisX(range) {
     this.axisX = range;
-    for (var i = 0; i < Object.keys(this.plugins).length; i++) {
-      if ('setAxisX' in Object.values(this.plugins)[i]) {
-        Object.values(this.plugins)[i].setAxisX(range);
-      }
-    }
+    this.viewX = range[1] - range[0];
+    this.currentTime(null);
   },
 
   currentTime(t) {
-    this.currentT = t;
-    var start = Math.max(0, this.currentT - (this.viewX / 2));
-    var end = start + this.viewX;
-    this.setAxisX([start, end]);
+    if (t !== null) { this.currentT = t;}
 
     for (var i = 0; i < Object.keys(this.plugins).length; i++) {
       if ('setCurrentTime' in Object.values(this.plugins)[i]) {
-        Object.values(this.plugins)[i].setCurrentTime(t);
+        Object.values(this.plugins)[i].setCurrentTime(this.currentT, [this.currentT - this.viewX/2, this.currentT + this.viewX/2]);
       }
     }
   },
 
   setViewX(n) {
     this.viewX = n;
-    this.currentTime(this.currentT);
+    var start = Math.max(0, this.currentT - (this.viewX / 2));
+    var end = start + this.viewX;
+    this.axisX = ([start, end]);
+    this.currentTime(null);
   }
 };
 

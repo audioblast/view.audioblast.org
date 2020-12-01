@@ -9,4 +9,4 @@
 <script type="text/javascript" src="https://api.audioblast.org/analysis/bedoya/js"></script>
 <script type="text/javascript" src="https://api.audioblast.org/analysis/tdsc/js"></script>
 <script type="text/javascript" src="https://api.audioblast.org/analysis/bi/js"></script>
-
+<script type="text/javascript" src="https://api.audioblast.org/analysis/audiowaveform/js"></script>

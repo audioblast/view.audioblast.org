@@ -1,4 +1,4 @@
-var availableComponents = ["bedoyaAB", "tdscAB", "biAB"];
+var availableComponents = ["bedoyaAB", "tdscAB", "biAB", "audiowaveformAB"];
 var componentList = document.getElementById("components");
 for (i=0; i < availableComponents.length; i++) {
   var newComponent = document.createElement('li');
