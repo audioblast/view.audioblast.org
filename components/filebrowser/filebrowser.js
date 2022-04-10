@@ -18,6 +18,7 @@ const filebrowserAB = {
             document.getElementById("computed-title").innerHTML = data[0]["name"];
             if (data[0]["filename"].substr(0,4) =="http") {
               document.getElementById("audio-1").src = data[0]["filename"];
+              document.getElementById("download-link").innerHTML = "<a href='"+data[0]["filename"]+"'>Download</a>";
             } else {
               document.getElementById("audio-1").remove();
             }
