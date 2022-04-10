@@ -18,6 +18,7 @@ const filebrowserAB = {
             document.getElementById("computed-title").innerHTML = data[0]["name"];
             if (data[0]["filename"].substr(0,4) =="http") {
               document.getElementById("audio-1").src = data[0]["filename"];
+              document.getElementById("download-link").innerHTML = "<a href='"+data[0]["filename"]+"'>Download</a>";
             } else {
               document.getElementById("audio-1").remove();
             }
@@ -28,7 +29,7 @@ const filebrowserAB = {
           });
 
 
-
+/**
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -38,7 +39,7 @@ const filebrowserAB = {
       };
       xhttp.open("GET", "https://api.audioblast.org/analysis/audiowaveform/?id="+this.id+"&source="+this.source+"&type=image300_40&output=nakedJSON", true);
       xhttp.send();
-
+*/
     },
     action: function(action, params) {
     }

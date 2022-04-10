@@ -1,6 +1,7 @@
 <div id = "filebrowser" class="ab-view-header">
   <div id="computed-title-div" class="filebrowser-selector">
-    <span id="computed-title"></span>
+    <span id="computed-title"></span><br>
+    <span id="download-link"></span>
   </div>
 
 <?php include("components/filebrowser/player.php"); ?>
