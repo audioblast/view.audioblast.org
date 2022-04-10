@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     id = urlParams.get('id');
   }
   viewAB.setFile(source, id);
+  viewAB.zoomFit();
   viewAB.addPlugin(audiowaveformAB);
   viewAB.addPlugin(tdscAB);
   viewAB.addPlugin(aciAB);
