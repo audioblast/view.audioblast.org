@@ -106,3 +106,14 @@ body, html {
   width:85%;
  height:200px;
 }
+
+.control-render ul {
+  list-style-type: none;    
+}
+
+.control-render ul li {
+  margin: 3px;
+  padding: 3px;
+  background-color: darkgray;
+  border-radius: 5px;
+}
