@@ -13,6 +13,21 @@ const audiowaveformAB = {
     res: null,
     duration: null,
     multiplier: 1,
+    annotations: false,
+    annotation_data: null,
+    getAnnotations: function() {
+      if (this.annotation_data == null) {
+        this.dataRequested = fetch("https://api.audioblast.org/data/annomate/?source_id="+this.id+"&source="+this.source+"&output=nakedJSON")
+        .then(res => res.json())
+        .then(data => {
+          this.annotation_data = data;
+          this.doRender();
+        })
+        .catch(function (error) {
+          document.getElementById(this.renderDiv).innerHTML = "Error: " + error;
+        });
+      }
+    },
     setCName: function(cname) {
       this.cname = cname;
     },
@@ -35,6 +50,13 @@ const audiowaveformAB = {
     },
     setTab: function(tab) {
       this.activeTab = tab;
+      if (tab=="annotations") {
+        this.annotations=true;
+        this.getAnnotations();
+      }
+      if (tab == "noannotations") {
+        this.annotations=false;
+      }
       this.doRender();
       this.doRenderControl();
     },
@@ -43,6 +65,12 @@ const audiowaveformAB = {
       this.doRenderControl();
     },
     doRenderControl: function() {
+      var controller = document.getElementById(this.controlDiv);
+      if (this.annotations) {
+        controller.innerHTML = "<ul><li><a onclick=\"viewAB.setTab('"+this.cname+"','noannotations')\">Hide Annotations</a></li></ul>";
+      } else {
+        controller.innerHTML = "<ul><li><a onclick=\"viewAB.setTab('"+this.cname+"','annotations')\">Show Annotations</a></li></ul>";
+      }
     },
     doRender: function() {
       if (this.data  === null) {
@@ -93,6 +121,47 @@ const audiowaveformAB = {
           width: 3
         }
       }];
+
+      layout['annotations'] = [];
+
+      if (this.annotations && this.annotation_data != null) {
+        for (let i = 0; i < this.annotation_data.length; i++) {
+          var color = '#d3d3d3';
+          switch(this.annotation_data[i]['type']){
+            case 'Voice Introduction':
+              color = 'lightblue';
+              break;
+            case 'Call':
+              color = 'lightgreen';
+              break;
+          }
+          layout['shapes'].push({
+            type: 'rect',
+            xref: 'x',
+            yref: 'paper',
+            x0: this.annotation_data[i]['time_start'],
+            y0: 0,
+            x1: this.annotation_data[i]['time_end'],
+            y1: 60,
+            fillcolor: color,
+            opacity: 0.4,
+            line: {
+                width: 0
+            }
+          });
+          layout['annotations'].push({
+            x: this.annotation_data[i]['time_start'],
+            y: 0,
+            xref: 'x',
+            yref: 'paper',
+            text: this.annotation_data[i]['type'],
+            showarrow: false,
+            ax: 0,
+            ay: 0,
+            xanchor: 'left'
+          });
+        }
+      }
        //Check that div still exists - it might have already been closed
        if (document.getElementById(this.renderDiv) !== undefined) {
           document.getElementById(this.renderDiv).innerHTML = "";
