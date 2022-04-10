@@ -6,8 +6,8 @@
 </div>
 
 <script type="text/javascript" src="https://view.audioblast.org/components/components/component.js"></script>
-<script type="text/javascript" src="https://view.audioblast.org/components/bedoya/js"></script>
-<script type="text/javascript" src="https://view.audioblast.org/components/tdsc/js"></script>
-<script type="text/javascript" src="https://view.audioblast.org/components/bi/js"></script>
-<script type="text/javascript" src="https://view.audioblast.org/components/audiowaveform/js"></script>
-<script type="text/javascript" src="https://view.audioblast.org/components/aci/js"></script>
+<script type="text/javascript" src="https://view.audioblast.org/components/bedoya/component.js"></script>
+<script type="text/javascript" src="https://view.audioblast.org/components/tdsc/component.js"></script>
+<script type="text/javascript" src="https://view.audioblast.org/components/bi/component.js"></script>
+<script type="text/javascript" src="https://view.audioblast.org/components/audiowaveform/component.js"></script>
+<script type="text/javascript" src="https://view.audioblast.org/components/aci/component.js"></script>
