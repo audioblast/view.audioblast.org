@@ -13,9 +13,9 @@
 <body>
 <div id="title">
   <h1>audioBLAST! Viewer</h1>
-  <?php include("components/components/component.php"); ?>
+  <?php include("core/includes/component.php"); ?>
 </div>
-<?php include("components/filebrowser/component.php"); ?>
+<?php include("core/filebrowser/component.php"); ?>
 <div id="ab-view">
 </div>
 
