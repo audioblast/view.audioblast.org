@@ -1,4 +1,4 @@
-document.onload = function() {
+window.onload = function() {
   var availableComponents = ["bedoyaAB", "tdscAB", "biAB", "audiowaveformAB", "aciAB"];
   var availableComponentsNames = ["Rainfall (Bedoya method)", "TDSC", "Bioacoustic Index", "Waveform", "Acoustic Complexity"];
   var componentList = document.getElementById("components");
