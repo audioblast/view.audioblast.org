@@ -28,7 +28,7 @@ const filebrowserAB = {
           });
 
 
-
+/**
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -38,7 +38,7 @@ const filebrowserAB = {
       };
       xhttp.open("GET", "https://api.audioblast.org/analysis/audiowaveform/?id="+this.id+"&source="+this.source+"&type=image300_40&output=nakedJSON", true);
       xhttp.send();
-
+*/
     },
     action: function(action, params) {
     }
