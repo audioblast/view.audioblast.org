@@ -8,6 +8,7 @@
 <script src="https://cdn.audioblast.org/plotly.js/dist/plotly.min.js" defer></script>
 <script type="text/javascript" src="https://cdn.audioblast.org/tabulator/dist/js/tabulator.min.js" defer></script>
 <script type="text/javascript" src="https://cdn.audioblast.org/ab-tabulator.js" defer></script>
+<?php include("core/includes/head.php"); ?>
 </head>
 
 <body>
