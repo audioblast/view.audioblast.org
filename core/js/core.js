@@ -11,10 +11,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
   viewAB.setFile(source, id);
   viewAB.addPlugin(audiowaveformAB);
+  viewAB.setTab('waveform1','annotations');
   viewAB.addPlugin(tdscAB);
   viewAB.addPlugin(aciAB);
   viewAB.setTab('aci3','chart');
-
 });
 
 
@@ -24,8 +24,8 @@ const viewAB = {
   duration: null,
   renderContainer: "ab-view",
   currentT: 0,
-  viewX: 10,  //x seconds fill schart
-  axisX: [0,10],
+  viewX: 60,  //x seconds fill schart
+  axisX: [0,60],
   pluginCount: 0,
   intervalID: null,
   setFile(source, id) {
@@ -43,7 +43,6 @@ const viewAB = {
         Object.values(this.plugins)[i].setDuration(this.duration);
       }
     }
-
   },
   getCurrentTime() {
     viewAB.currentTime(document.getElementById("audio-1").currentTime);
@@ -104,7 +103,7 @@ const viewAB = {
       var cP = document.createElement('div');
       cP.setAttribute("id", "control-parent-"+cname);
       cP.setAttribute("class", "control-parent-render");
-      cP.innerHTML = "<div class='ab-control-parent'><a onclick='viewAB.removePlugin(\""+cname+"\")'>[x]</a> "+name+"</div>";
+      cP.innerHTML = "<div class='ab-control-parent'><a onclick='viewAB.removePlugin(\""+cname+"\")'>❌</a> "+name+"</div>";
       document.getElementById("render-parent-"+cname).appendChild(cP);
 
       //Control div
@@ -139,7 +138,7 @@ const viewAB = {
   setAxisX(range) {
     this.axisX = range;
     this.viewX = range[1] - range[0];
-    this.currentTime(null);
+    this.currentTime(this.duration/2);
   },
 
   currentTime(t) {

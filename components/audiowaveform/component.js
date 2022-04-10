@@ -135,6 +135,15 @@ const audiowaveformAB = {
               color = 'lightgreen';
               break;
           }
+          var label = this.annotation_data[i]['type'];
+          if (label == "Voice Introduction") {
+            label = "  🗣️"+" Voice Introduction";
+          }
+          if (label == "Call") {
+            if (this.annotation_data[i]['taxon'] != '') {
+              label = "  🦗 "+label+" (<i>"+this.annotation_data[i]['taxon']+"</i>)";
+            }
+          }
           layout['shapes'].push({
             type: 'rect',
             xref: 'x',
@@ -154,11 +163,14 @@ const audiowaveformAB = {
             y: 0,
             xref: 'x',
             yref: 'paper',
-            text: this.annotation_data[i]['type'],
+            text: label,
             showarrow: false,
             ax: 0,
             ay: 0,
-            xanchor: 'left'
+            xanchor: 'left',
+            font: {
+              size: 14
+            }
           });
         }
       }
