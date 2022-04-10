@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
   viewAB.setFile(source, id);
   viewAB.addPlugin(audiowaveformAB);
+  viewAB.addPlugin(tdscAB);
+  viewAB.addPlugin(aciAB);
+  viewAB.setTab('aci3','chart');
 
 });
 
