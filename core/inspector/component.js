@@ -18,7 +18,12 @@ function augmentInspectorSource(source) {
     .then(res => res.json())
     .then(data => {
       viewAB.api_inc();
-      document.getElementById('inspector-source').innerHTML = "<a target='_blank' href='"+data['url']+"'>"+data['mname']+"</a>";
+      var s = document.getElementById('inspector-source');
+      s.innerHTML = '';
+      if (Object.keys(data).includes("logo_url")) {
+        s.innerHTML += "<span style='text-align:center;'><img src='"+data['logo_url']+"' width='150px' /></span><br/>";
+      }
+      s.innerHTML += "<a target='_blank' href='"+data['url']+"'>"+data['mname']+"</a>";
     })
     .catch(function (error) {
       //document.getElementById(this.renderDiv).innerHTML = "Error: " + error;
