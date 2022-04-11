@@ -42,7 +42,7 @@ const bedoyaAB = {
       var controller = document.getElementById(this.controlDiv);
       controller.innerHTML = "<ul><li><a onclick=\"viewAB.setTab('"+this.cname+"','table')\">Table</a></li><li><a onclick=\"viewAB.setTab('"+this.cname+"','chart')\">Chart</a></li></ul>";
     },
-    doRender: function() {
+    doRender: function(reason) {
       if (this.data == null) {
         if (this.dataRequested == null) {
           this.dataRequested = fetch("https://api.audioblast.org/analysis/bedoya/?id="+this.id+"&source="+this.source+"&output=nakedJSON")
@@ -59,6 +59,7 @@ const bedoyaAB = {
         return 0;
       }
       if (this.activeTab == "table") {
+        if (reason=="resize") {return;}
         var element = document.getElementById(this.renderDiv);
         if (element != null) {
           Plotly.purge(this.renderDiv);
