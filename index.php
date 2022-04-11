@@ -7,7 +7,7 @@
 <script type="text/javascript" src="core/js/core.js"></script>
 <script type="text/javascript" src="https://cdn.audioblast.org/plotly.js/dist/plotly.min.js" defer></script>
 <script type="text/javascript" src="https://cdn.audioblast.org/tabulator/dist/js/tabulator.min.js" defer></script>
-<script type="text/javascript" src="https://cdn.audioblast.org/ab-tabulator.js" defer></script>
+<script type="text/javascript" src="ab-tabulator.js" defer></script>
 <?php include("core/includes/head.php"); ?>
 </head>
 
@@ -24,6 +24,8 @@
   <div id="inspector-content">
   </div>
 </div>
+<div id="api-calls">API calls: <span id="api-call-count">0</span></div>
+
 </body>
 </head>
 

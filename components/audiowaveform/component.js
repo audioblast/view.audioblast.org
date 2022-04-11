@@ -20,6 +20,7 @@ const audiowaveformAB = {
         this.dataRequested = fetch("https://api.audioblast.org/data/annomate/?source_id="+this.id+"&source="+this.source+"&output=nakedJSON")
         .then(res => res.json())
         .then(data => {
+          viewAB.api_inc();
           this.annotation_data = data;
           this.doRender();
         })
@@ -78,6 +79,7 @@ const audiowaveformAB = {
           this.dataRequested = fetch("https://api.audioblast.org/analysis/audiowaveform/?type=json10pps8bit&id="+this.id+"&source="+this.source+"&output=nakedJSON")
           .then(res => res.json())
           .then(data => {
+            viewAB.api_inc();
             this.res = "10pps8bit";
             var timeAxis = [];
             var ampAxis1 = [];
@@ -188,6 +190,7 @@ const audiowaveformAB = {
         this.dataRequested = fetch("https://api.audioblast.org/analysis/audiowaveform/?type=json200pps16bit&id="+this.id+"&source="+this.source+"&output=nakedJSON") 
           .then(res => res.json())
           .then(data => {
+            viewAB.api_inc();
             this.res = "200pps16bit";
             var timeAxis = [];
             var ampAxis1 = [];

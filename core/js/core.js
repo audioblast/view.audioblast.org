@@ -24,6 +24,11 @@ const viewAB = {
   pluginCount: 0,
   intervalID: null,
   rec_data: null,
+  api_count:0,
+  api_inc: function() {
+    this.api_count++;
+    document.getElementById('api-call-count').innerHTML = this.api_count;
+  },
   inspector_history: [],
   loaded_defaults: false,
   load_defaults: function() {
@@ -42,6 +47,7 @@ const viewAB = {
     var req = fetch("https://api.audioblast.org/data/recordings/?id="+this.id+"&source="+this.source+"&output=nakedJSON")
       .then(res => res.json())
       .then(data => {
+        this.api_inc();
         this.rec_data = data[0];
         this.setDuration(data[0]["duration"]);
         setInspectorActiveRecording();
