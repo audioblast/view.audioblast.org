@@ -26,6 +26,7 @@ function augmentInspectorSource(source) {
 }
 
 function augmentInspectorTaxon(taxon) {
+  if (taxon == '') {return;}
   var req = fetch("https://api.audioblast.org/data/taxa/?taxon="+taxon+"&output=nakedJSON")
     .then(res => res.json())
     .then(data => {
