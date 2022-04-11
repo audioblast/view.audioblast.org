@@ -137,7 +137,7 @@ const viewAB = {
       var cP = document.createElement('div');
       cP.setAttribute("id", "control-parent-"+cname);
       cP.setAttribute("class", "control-parent-render");
-      cP.innerHTML = "<div class='ab-control-parent'><a onclick='viewAB.removePlugin(\""+cname+"\")'>❌</a> "+name+"</div>";
+      cP.innerHTML = "<div class='ab-control-parent'><small><a onclick='viewAB.removePlugin(\""+cname+"\")'>❌</a></small> "+name+"</div>";
       document.getElementById("render-parent-"+cname).appendChild(cP);
 
       //Control div
