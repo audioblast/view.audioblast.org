@@ -47,6 +47,7 @@ const viewAB = {
     var req = fetch("https://api.audioblast.org/data/recordings/?id="+this.id+"&source="+this.source+"&output=nakedJSON")
       .then(res => res.json())
       .then(data => {
+        document.getElementById("progress").style.display = "none";
         this.api_inc();
         this.rec_data = data[0];
         this.setDuration(data[0]["duration"]);

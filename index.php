@@ -2,6 +2,7 @@
 <head>
 <title>audioBLAST! Viewer</title>
 <link rel="stylesheet" href="ab-view.css">
+<link rel="stylesheet" href="progress.css">
 <link rel="stylesheet" href="https://cdn.audioblast.org/ab-api.css">
 <link rel="stylesheet" href="https://cdn.audioblast.org/tabulator/dist/css/tabulator.min.css">
 <script type="text/javascript" src="core/js/core.js"></script>
@@ -24,6 +25,9 @@
   <div id="inspector-content">
   </div>
 </div>
+
+<div id="progress" class="dot-carousel"></div>
+
 <div id="api-calls">API calls: <span id="api-call-count">0</span></div>
 
 </body>

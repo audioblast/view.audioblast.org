@@ -1,0 +1,25 @@
+.dot-carousel {
+  position: relative;
+  left: -9999px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #9880ff;
+  color: #9880ff;
+  box-shadow: 9984px 0 0 0 darkgray, 9999px 0 0 0 darkgray, 10014px 0 0 0 darkgray;
+  animation: dot-carousel 1.5s infinite linear;
+  margin-left:40%;
+  margin-top:50px;
+}
+
+@keyframes dot-carousel {
+  0% {
+    box-shadow: 9984px 0 0 -1px darkgray, 9999px 0 0 1px darkgray, 10014px 0 0 -1px darkgray;
+  }
+  50% {
+    box-shadow: 10014px 0 0 -1px darkgray, 9984px 0 0 -1px darkgray, 9999px 0 0 1px darkgray;
+  }
+  100% {
+    box-shadow: 9999px 0 0 1px darkgray, 10014px 0 0 -1px darkgray, 9984px 0 0 -1px darkgray;
+  }
+}
