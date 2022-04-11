@@ -4,7 +4,9 @@
     <span id="download-link"></span>
   </div>
 
+
 <?php include("core/filebrowser/player.php"); ?>
+
 
 <div id="zoom-control">
 <ul class="ulhoriz">
@@ -19,4 +21,3 @@
 
 
 </div>
-<script type="text/javascript" src="https://view.audioblast.org/core/filebrowser/filebrowser.js"></script>

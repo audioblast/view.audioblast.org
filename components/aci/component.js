@@ -48,6 +48,8 @@ const aciAB = {
           this.dataRequested = fetch("https://api.audioblast.org/analysis/aci/?id="+this.id+"&source="+this.source+"&output=nakedJSON")
           .then(res => res.json())
           .then(data => {
+            viewAB.api_inc();
+console.log("https://api.audioblast.org/analysis/aci/?id="+this.id+"&source="+this.source+"&duration=1&output=nakedJSON");
             this.data = data;
             this.doRender();
           })
@@ -66,7 +68,7 @@ const aciAB = {
         if (this.axisX == null) {
           var scrollTo = null;
         } else {
-          var scrollTo = this.axisX[0]-this.axisX[0]%30;
+          var scrollTo = this.axisX[0]-this.axisX[0];
         }
         generateAnalysisTabulator("#"+this.renderDiv, "aci", this.source, this.id, this.data, scrollTo);
       }
@@ -118,7 +120,7 @@ const aciAB = {
       if (this.activeTab == "table") {
         var table = Tabulator.findTable("#"+this.renderDiv)[0];
         if (table !== undefined && this.axisX != null) {
-          table.scrollToRow(parseInt(this.currentTime-this.currentTime%30));
+          table.scrollToRow(parseInt(this.currentTime));
         }
       }
     }

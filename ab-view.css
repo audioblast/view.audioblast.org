@@ -14,6 +14,11 @@ body, html {
     cursor:pointer;
 }
 
+.dot-carousel {
+  position:absolute;
+  left:50%;
+}
+
 #zoom-control {
   float:right;
   padding-right:20px;
@@ -38,6 +43,25 @@ body, html {
   padding-right:10px;
 }
 
+#ab-view {
+  width:80%;
+  float: left;
+  display:block;
+}
+
+#inspector {
+  width: 20%;
+  float:right;
+  display:block;
+  background-color: #CCC;
+  margin-top:3px;
+  height:100%;
+  border-left: 3px solid white;
+  padding-left:3px;
+  padding-right:3px;
+  overflow-wrap: break-word;
+}
+
 .ab-control-parent {
   margin-bottom:5px;
 }
@@ -52,6 +76,7 @@ body, html {
   background-color:#888;
   width:100%;
   overflow:hidden;
+  margin-bottom:3px;
 }
 
 #title h1 {
@@ -117,4 +142,13 @@ body, html {
   background-color: darkgray;
   border-radius: 5px;
   width: 100px;
+}
+
+#api-calls {
+  position: fixed;
+  bottom: 0;
+  width: 100px;
+  font-size:smaller;
+  background-color:darkgray;
+  border-top-right-radius:5px;
 }

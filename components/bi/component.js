@@ -48,6 +48,7 @@ const biAB = {
           this.dataRequested = fetch("https://api.audioblast.org/analysis/bi/?id="+this.id+"&source="+this.source+"&output=nakedJSON")
           .then(res => res.json())
           .then(data => {
+            viewAB.api_inc();
             this.data = data;
             this.doRender();
           })
