@@ -10,6 +10,7 @@
 
 <div id="zoom-control">
 <ul class="ulhoriz">
+<li class="big"><a onclick="window.open('https://audioblast.org/audioblast/?source=<?php print($_GET['source']); ?>&id=<?php print($_GET['id']); ?>', '_self');">audioBLAST!</a></li>
 <li><a onclick="viewAB.zoomOut()">-</a></li>
 <li><a onclick="viewAB.zoomIn()">+</a></li>
 <li><a onclick="viewAB.zoomFit()">[-]</a></li>
