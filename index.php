@@ -15,11 +15,15 @@
 <div id="title">
   <h1>audioBLAST! Viewer</h1>
   <?php include("core/includes/add_analysis.php"); ?>
+  <?php include("core/filebrowser/component.php"); ?>
 </div>
-<?php include("core/filebrowser/component.php"); ?>
 <div id="ab-view">
 </div>
-
+<div id="inspector">
+  <h2>Inspector</h2>
+  <div id="inspector-content">
+  </div>
+</div>
 </body>
 </head>
 

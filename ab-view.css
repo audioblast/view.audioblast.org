@@ -38,6 +38,22 @@ body, html {
   padding-right:10px;
 }
 
+#ab-view {
+  width:80%;
+  float: left;
+  display:block;
+}
+
+#inspector {
+  width: 20%;
+  float:right;
+  display:block;
+  background-color: #CCC;
+  margin-top:3px;
+  height:100%;
+  border-left: 3px solid white;
+}
+
 .ab-control-parent {
   margin-bottom:5px;
 }
@@ -52,6 +68,7 @@ body, html {
   background-color:#888;
   width:100%;
   overflow:hidden;
+  margin-bottom:3px;
 }
 
 #title h1 {
@@ -118,3 +135,4 @@ body, html {
   border-radius: 5px;
   width: 100px;
 }
+

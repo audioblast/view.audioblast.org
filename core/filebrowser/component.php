@@ -19,4 +19,3 @@
 
 
 </div>
-<script type="text/javascript" src="https://view.audioblast.org/core/filebrowser/filebrowser.js"></script>
