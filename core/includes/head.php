@@ -5,4 +5,3 @@
 <script type="text/javascript" src="components/bi/component.js"></script>
 <script type="text/javascript" src="components/audiowaveform/component.js"></script>
 <script type="text/javascript" src="components/aci/component.js"></script>
-<script type="text/javascript" src="core/filebrowser/filebrowser.js"></script>

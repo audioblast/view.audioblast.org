@@ -10,11 +10,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     id = urlParams.get('id');
   }
   viewAB.setFile(source, id);
-  viewAB.addPlugin(audiowaveformAB);
-  viewAB.setTab('waveform1','annotations');
-  viewAB.addPlugin(tdscAB);
-  viewAB.addPlugin(aciAB);
-  viewAB.setTab('aci3','chart');
 });
 
 
@@ -28,13 +23,45 @@ const viewAB = {
   axisX: [0,60],
   pluginCount: 0,
   intervalID: null,
-  setFile(source, id) {
+  rec_data: null,
+  inspector_history: [],
+  loaded_defaults: false,
+  load_defaults: function() {
+    this.loaded_defauts = true;
+    viewAB.addPlugin(audiowaveformAB);
+    viewAB.setTab('waveform0','annotations');
+    viewAB.addPlugin(tdscAB);
+    viewAB.addPlugin(aciAB);
+    viewAB.setTab('aci2','chart');
+  },
+  setFile: function(source, id){
+    if (source == null || id == null) {return;}
     this.source = source;
     this.id = id;
-    if (this.source == null || this.id == null) {return;}
-    for (var i = 0; i < Object.keys(this.plugins).length; i++) {
-      Object.values(this.plugins)[i].setFile(this.source, this.id);
-    }
+
+    var req = fetch("https://api.audioblast.org/data/recordings/?id="+this.id+"&source="+this.source+"&output=nakedJSON")
+      .then(res => res.json())
+      .then(data => {
+        this.rec_data = data[0];
+        this.setDuration(data[0]["duration"]);
+        setInspectorActiveRecording();
+        document.getElementById("computed-title").innerHTML = viewAB.rec_data["name"];
+        if (viewAB.rec_data["filename"].substr(0,4) =="http") {
+          document.getElementById("audio-1").src = viewAB.rec_data["filename"];
+          document.getElementById("download-link").innerHTML = "<a href='"+viewAB.rec_data["filename"]+"'>Download</a>";
+        } else {
+          document.getElementById("audio-1").remove();
+        }
+        for (var i = 0; i < Object.keys(this.plugins).length; i++) {
+          Object.values(this.plugins)[i].setFile(this.source, this.id);
+        }
+        if (!this.loaded_defaults) {
+          this.load_defaults();
+        }
+      })
+      .catch(function (error) {
+//        document.getElementById(this.renderDiv).innerHTML = "Error: " + error;
+      });
   },
   setDuration(d) {
     this.duration = d;
