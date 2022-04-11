@@ -35,8 +35,8 @@ function augmentInspectorTaxon(taxon) {
       if (italics.includes(data[0]['rank'])) {
         e.innerHTML = "<i>"+data[0]['taxon']+"</i>";
       }
-      var rec_link = "<a target='_blank' href='http://audioblast.org/?page=recordings&taxon="+taxon+"'>Recordings</a>";
-      var trait_link = "<a target='_blank' href='http://audioblast.org/?page=traits&taxon="+taxon+"'>Traits</a>";
+      var rec_link = "<a href='http://audioblast.org/?page=recordings&taxon="+taxon+"'>Recordings</a>";
+      var trait_link = "<a href='http://audioblast.org/?page=traits&taxon="+taxon+"'>Traits</a>";
       e.innerHTML += "<br><small>"+rec_link+" | "+trait_link+"</small>";
     })
     .catch(function (error) {
