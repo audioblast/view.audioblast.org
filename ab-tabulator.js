@@ -18,7 +18,7 @@ var generateAnalysisTabulator = function(element, table, source, id, data, scrol
           index:"startTime",
           height:"100%",
           ajaxURL:ajaxURL,
-          progressiveLoad:"scroll",
+          progressiveLoad:"load",
           paginationSize:50,
           dataSendParams:{
             "size":"page_size",
