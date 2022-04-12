@@ -44,8 +44,9 @@ body, html {
   display:inline-block;
 }
 
-.big {
-  width:120px !important;
+#zoom-control li img {
+  height:30px;
+  width:30px;
 }
 
 #spectro {
