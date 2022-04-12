@@ -10,6 +10,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     id = urlParams.get('id');
   }
   viewAB.setFile(source, id);
+  window.onresize = function() {
+    viewAB.doRender("resize");
+  }
 });
 
 
@@ -173,6 +176,12 @@ const viewAB = {
     this.axisX = range;
     this.viewX = range[1] - range[0];
     this.currentTime(this.duration/2);
+  },
+
+  doRender(reason) {
+    for (var i = 0; i < Object.keys(this.plugins).length; i++) {
+        Object.values(this.plugins)[i].doRender(reason);
+    }
   },
 
   currentTime(t) {

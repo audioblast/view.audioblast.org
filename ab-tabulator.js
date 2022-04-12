@@ -1,4 +1,5 @@
 var generateAnalysisTabulator = function(element, table, source, id, data, scrollTo) {
+  if (element=="#null") {return;}
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "https://api.audioblast.org/analysis/"+table+"/columns/?output=nakedJSON", true);
   xhr.extraInfo = [element, table, source, id, data, scrollTo];
@@ -24,23 +25,23 @@ var generateAnalysisTabulator = function(element, table, source, id, data, scrol
             "size":"page_size",
           },
           columns:parseColumns(cols),
-          dataLoaded: function(){
-            if (scrollTo != null) {
-              this.scrollToRow(scrollTo);
-            }
-          },
           ajaxRequesting:function(url, params){
             viewAB.api_inc();
           },
         };
         if (this.data == null ) {
-          settings.ajaxProgressiveLoad = "load";
+          settings.progressiveLoad = "load";
           settings.ajaxURL = ajaxURL;
         } else {
           settings.data = this.data;
         }
 
         var table = new Tabulator(element, settings);
+        table.on("dataLoaded", function(){
+          if (scrollTo != null) {
+              this.scrollToRow(scrollTo);
+            }
+        });
       } else {
         console.error(xhr.statusText);
       }

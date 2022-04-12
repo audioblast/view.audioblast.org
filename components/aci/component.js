@@ -42,14 +42,13 @@ const aciAB = {
       var controller = document.getElementById(this.controlDiv);
       controller.innerHTML = "<ul><li><a onclick=\"viewAB.setTab('"+this.cname+"','table')\">Table</a></li><li><a onclick=\"viewAB.setTab('"+this.cname+"','chart')\">Chart</a></li></ul>";
     },
-    doRender: function() {
+    doRender: function(reason) {
       if (this.data == null) {
         if (this.dataRequested == null) {
           this.dataRequested = fetch("https://api.audioblast.org/analysis/aci/?id="+this.id+"&source="+this.source+"&output=nakedJSON")
           .then(res => res.json())
           .then(data => {
             viewAB.api_inc();
-console.log("https://api.audioblast.org/analysis/aci/?id="+this.id+"&source="+this.source+"&duration=1&output=nakedJSON");
             this.data = data;
             this.doRender();
           })
@@ -60,6 +59,7 @@ console.log("https://api.audioblast.org/analysis/aci/?id="+this.id+"&source="+th
         return 0;
       }
       if (this.activeTab == "table") {
+        if (reason=="resize") {return;}
         var element = document.getElementById(this.renderDiv);
         if (element != null) {
           Plotly.purge(this.renderDiv);

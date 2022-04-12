@@ -14,6 +14,7 @@
 
 <body>
 <div id="title">
+  <img src="https://cdn.audioblast.org/audioblast_flash.png" class="audioblast-flash" />
   <h1>audioBLAST! Viewer</h1>
   <?php include("core/includes/add_analysis.php"); ?>
   <?php include("core/filebrowser/component.php"); ?>

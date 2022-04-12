@@ -38,8 +38,9 @@ const tdscAB = {
     },
     doRenderControl: function() {
     },
-    doRender: function() {
+    doRender: function(reason) {
       if (this.activeTab == "table") {
+        if (reason=="resize") {return;}
         generateAnalysisTabulator("#"+this.renderDiv, "tdsc", this.source, this.id, null, scrollTo);
       }
     },

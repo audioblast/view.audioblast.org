@@ -180,10 +180,10 @@ const audiowaveformAB = {
        if (document.getElementById(this.renderDiv) !== undefined) {
           document.getElementById(this.renderDiv).innerHTML = "";
           if (this.res == '10pps8bit') {
-            Plotly.newPlot(this.renderDiv, [{x:this.data.lowest.t, y:this.data.lowest.a1, fill: 'tozeroy', mode: 'none', fillcolor: 'black', name: 'min'},{x:this.data.lowest.t, y:this.data.lowest.a2, fill: 'tozeroy', mode: 'none', fillcolor: 'black', name: 'max'}], layout, {displayModeBar: false});
+            Plotly.newPlot(this.renderDiv, [{x:this.data.lowest.t, y:this.data.lowest.a1, fill: 'tozeroy', mode: 'none', fillcolor: 'black', name: 'min'},{x:this.data.lowest.t, y:this.data.lowest.a2, fill: 'tozeroy', mode: 'none', fillcolor: 'black', name: 'max'}], layout, {displayModeBar: false, doubleClick: false});
           }
           if (this.res == '200pps16bit') {
-            Plotly.newPlot(this.renderDiv, [{x:this.data.middle.t, y:this.data.middle.a1, fill: 'tozeroy', mode: 'none', fillcolor: 'black', name: 'min'},{x:this.data.middle.t, y:this.data.middle.a2, fill: 'tozeroy', mode: 'none', fillcolor: 'black', name: 'max'}], layout, {displayModeBar: false});
+            Plotly.newPlot(this.renderDiv, [{x:this.data.middle.t, y:this.data.middle.a1, fill: 'tozeroy', mode: 'none', fillcolor: 'black', name: 'min'},{x:this.data.middle.t, y:this.data.middle.a2, fill: 'tozeroy', mode: 'none', fillcolor: 'black', name: 'max'}], layout, {displayModeBar: false, doubleClick: false});
           }
        }
        if (this.res == '10pps8bit') {
