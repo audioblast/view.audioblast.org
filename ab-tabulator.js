@@ -1,4 +1,5 @@
 var generateAnalysisTabulator = function(element, table, source, id, data, scrollTo) {
+  if (element=="#null") {return;}
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "https://api.audioblast.org/analysis/"+table+"/columns/?output=nakedJSON", true);
   xhr.extraInfo = [element, table, source, id, data, scrollTo];
