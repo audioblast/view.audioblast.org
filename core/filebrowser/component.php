@@ -12,7 +12,7 @@
 <ul class="ulhoriz">
 <li>
   <a onclick="window.open('https://audioblast.org/audioblast.php?source=<?php print($_GET['source']); ?>&id=<?php print($_GET['id']); ?>', '_self');">
-    <img src="https://cdn.audioblast.org/audioblast_flash.png" title="alphaBLAST! Search"/></a>
+    <img class="audioblast-button" src="https://cdn.audioblast.org/audioblast_flash_white.png" title="alphaBLAST! Search"/></a>
 </li>
 <li><a onclick="viewAB.zoomOut()">
   <img src="https://cdn.audioblast.org/audioblast_zoom_out.png" title="Zoom Out"/></a></li>

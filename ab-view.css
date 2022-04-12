@@ -49,6 +49,10 @@ body, html {
   width:30px;
 }
 
+.audioblast-button:hover {
+  filter: invert(61%) sepia(77%) saturate(1488%) hue-rotate(360deg) brightness(103%) contrast(103%);
+}
+
 #spectro {
   float:right;
   padding-right:10px;
