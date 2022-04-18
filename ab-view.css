@@ -137,7 +137,7 @@ body, html {
 
 .control-parent-render{
   float:left;
-  width:100px;
+  width:15%;
 }
 
 .ab-render{
@@ -146,8 +146,13 @@ body, html {
  height:200px;
 }
 
+.control-render {
+  width: 100%;
+}
+
 .control-render ul {
-  list-style-type: none;    
+  list-style-type: none;
+  padding: 0px;
 }
 
 .control-render ul li {
