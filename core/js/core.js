@@ -58,7 +58,7 @@ const viewAB = {
         document.getElementById("computed-title").innerHTML = viewAB.rec_data["name"];
         if (viewAB.rec_data["filename"].substr(0,4) =="http") {
           document.getElementById("audio-1").src = viewAB.rec_data["filename"];
-          document.getElementById("download-link").innerHTML = "<a href='"+viewAB.rec_data["filename"]+"'>Download</a>";
+          document.getElementById("download-link").innerHTML = "<a href='"+viewAB.rec_data["filename"]+"'>Download</a> ";
         }
         document.getElementById("download-link").innerHTML += "<a href='https://api.audioblast.org/embed/?source="+this.source+"&id="+this.id+"'>Embed</a>";
         for (var i = 0; i < Object.keys(this.plugins).length; i++) {
