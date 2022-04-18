@@ -4,27 +4,37 @@
     <span id="download-link"></span>
   </div>
 
+  <?php include("core/filebrowser/player.php"); ?>
 
-<?php include("core/filebrowser/player.php"); ?>
+  <div id="zoom-control">
+    <ul class="ulhoriz">
+      <li>
+        <a onclick="window.open('https://audioblast.org/audioblast.php?source=<?php print($_GET['source']); ?>&id=<?php print($_GET['id']); ?>', '_self');">
+          <img class="audioblast-button" src="https://cdn.audioblast.org/audioblast_flash_white.png"
+               alt="alphaBLAST! Search"/>
+        </a>
+      </li>
+      <li>
+        <a onclick="viewAB.zoomOut()">
+          <img src="https://cdn.audioblast.org/audioblast_zoom_out.png"
+               alt="Zoom Out"/>
+        </a>
+      </li>
+      <li>
+        <a onclick="viewAB.zoomIn()">
+          <img src="https://cdn.audioblast.org/audioblast_zoom_in.png"
+               alt="Zoom In"/>
+        </a>
+      </li>
+      <li>
+        <a onclick="viewAB.zoomFit()">
+          <img src="https://cdn.audioblast.org/audioblast_zoom_fit.png"
+               alt="Zoom to Fit"/>
+        </a>
+      </li>
+    </ul>
+  </div>
 
-
-<div id="zoom-control">
-<ul class="ulhoriz">
-<li>
-  <a onclick="window.open('https://audioblast.org/audioblast.php?source=<?php print($_GET['source']); ?>&id=<?php print($_GET['id']); ?>', '_self');">
-    <img class="audioblast-button" src="https://cdn.audioblast.org/audioblast_flash_white.png" title="alphaBLAST! Search"/></a>
-</li>
-<li><a onclick="viewAB.zoomOut()">
-  <img src="https://cdn.audioblast.org/audioblast_zoom_out.png" title="Zoom Out"/></a></li>
-<li><a onclick="viewAB.zoomIn()">
-  <img src="https://cdn.audioblast.org/audioblast_zoom_in.png" title="Zoom In"/></a></li>
-<li><a onclick="viewAB.zoomFit()">
-  <img src="https://cdn.audioblast.org/audioblast_zoom_fit.png" title= "Zoom to Fit"/></a></li>
-</ul>
-</div>
-
-<div id = "spectro">
-</div>
-
-
+  <div id = "spectro">
+  </div>
 </div>
