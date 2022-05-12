@@ -28,7 +28,13 @@
   </div>
 </div>
 
-<div id="progress" class="dot-carousel"></div>
+<?php
+if (isset($_GET["source"]) && isset($_GET["id"])) {
+  print("<div id='progress' class='dot-carousel'></div>");
+} else {
+  print("No recording selected.");
+}
+?>
 
 <div id="api-calls">API calls: <span id="api-call-count">0</span></div>
 
