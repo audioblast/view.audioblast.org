@@ -10,6 +10,7 @@
   animation: dot-carousel 1.5s infinite linear;
   margin-left:40%;
   margin-top:50px;
+  marigin-bottom:50px;
 }
 
 @keyframes dot-carousel {
