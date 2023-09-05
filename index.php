@@ -1,3 +1,9 @@
+<?php
+if (isset($_GET['page']) && $_GET['page'] == "ping") {
+  echo "pong";
+  exit;
+}
+?>
 <html>
 <head>
 <title>audioBLAST! Viewer</title>
