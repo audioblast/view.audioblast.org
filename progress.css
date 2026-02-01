@@ -4,23 +4,23 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
-  box-shadow: 9984px 0 0 0 darkgray, 9999px 0 0 0 darkgray, 10014px 0 0 0 darkgray;
+  background-color: #2563eb;
+  color: #2563eb;
+  box-shadow: 9984px 0 0 0 #64748b, 9999px 0 0 0 #64748b, 10014px 0 0 0 #64748b;
   animation: dot-carousel 1.5s infinite linear;
-  margin-left:50%;
-  margin-top:50px;
-  marigin-bottom:50px;
+  margin-left: 50%;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 @keyframes dot-carousel {
   0% {
-    box-shadow: 9984px 0 0 -1px darkgray, 9999px 0 0 1px darkgray, 10014px 0 0 -1px darkgray;
+    box-shadow: 9984px 0 0 -1px #64748b, 9999px 0 0 1px #2563eb, 10014px 0 0 -1px #64748b;
   }
   50% {
-    box-shadow: 10014px 0 0 -1px darkgray, 9984px 0 0 -1px darkgray, 9999px 0 0 1px darkgray;
+    box-shadow: 10014px 0 0 -1px #64748b, 9984px 0 0 -1px #64748b, 9999px 0 0 1px #2563eb;
   }
   100% {
-    box-shadow: 9999px 0 0 1px darkgray, 10014px 0 0 -1px darkgray, 9984px 0 0 -1px darkgray;
+    box-shadow: 9999px 0 0 1px #2563eb, 10014px 0 0 -1px #64748b, 9984px 0 0 -1px #64748b;
   }
 }
