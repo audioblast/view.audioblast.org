@@ -55,12 +55,20 @@ const viewAB = {
         this.rec_data = data[0];
         this.setDuration(data[0]["duration"]);
         setInspectorActiveRecording();
-        document.getElementById("computed-title").innerHTML = viewAB.rec_data["name"];
+        //Text and elements, not markup, as these come from the recording's source and the page's address
+        document.getElementById("computed-title").textContent = viewAB.rec_data["name"];
+        var links = document.getElementById("download-link");
         if (viewAB.rec_data["filename"].substr(0,4) =="http") {
           document.getElementById("audio-1").src = viewAB.rec_data["filename"];
-          document.getElementById("download-link").innerHTML = "<a href='"+viewAB.rec_data["filename"]+"'>Download</a> ";
+          var download = document.createElement('a');
+          download.setAttribute("href", viewAB.rec_data["filename"]);
+          download.textContent = "Download";
+          links.replaceChildren(download, " ");
         }
-        document.getElementById("download-link").innerHTML += "<a href='https://api.audioblast.org/embed/?source="+this.source+"&id="+this.id+"'>Embed</a>";
+        var embed = document.createElement('a');
+        embed.setAttribute("href", "https://api.audioblast.org/embed/?source="+encodeURIComponent(this.source)+"&id="+encodeURIComponent(this.id));
+        embed.textContent = "Embed";
+        links.appendChild(embed);
         for (var i = 0; i < Object.keys(this.plugins).length; i++) {
           Object.values(this.plugins)[i].setFile(this.source, this.id);
         }

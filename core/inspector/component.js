@@ -5,9 +5,13 @@ function setInspectorActiveRecording() {
   var ret = "";
   for (let i=0; i < keys.length; i++) {
     ret += "<b><span id='inspector-"+keys[i]+"-label'>" + keys[i] + "</span></b><br>";
-    ret += "<span id='inspector-"+keys[i]+"'>" + rec[keys[i]] + "</span><br><br>";
+    ret += "<span id='inspector-"+keys[i]+"'></span><br><br>";
   }
   document.getElementById("inspector-content").innerHTML = ret;
+  //Values as text, not markup, as they come from the recording's source
+  for (let i=0; i < keys.length; i++) {
+    document.getElementById("inspector-"+keys[i]).textContent = String(rec[keys[i]]);
+  }
   augmentInspectorSource(rec['source']);
   augmentInspectorTaxon(rec['taxon']);
 }
@@ -39,11 +43,19 @@ function augmentInspectorTaxon(taxon) {
       var e = document.getElementById('inspector-taxon');
       const italics = ["Species", "Subspecies", "Genus", "Subgenus"];
       if (italics.includes(data[0]['rank'])) {
-        e.innerHTML = "<i>"+data[0]['taxon']+"</i>";
+        var italic = document.createElement('i');
+        italic.textContent = data[0]['taxon'];
+        e.replaceChildren(italic);
       }
-      var rec_link = "<a href='http://audioblast.org/?page=recordings&taxon="+taxon+"'>Recordings</a>";
-      var trait_link = "<a href='http://audioblast.org/?page=traits&taxon="+taxon+"'>Traits</a>";
-      e.innerHTML += "<br><small>"+rec_link+" | "+trait_link+"</small>";
+      var rec_link = document.createElement('a');
+      rec_link.setAttribute("href", "http://audioblast.org/?page=recordings&taxon="+encodeURIComponent(taxon));
+      rec_link.textContent = "Recordings";
+      var trait_link = document.createElement('a');
+      trait_link.setAttribute("href", "http://audioblast.org/?page=traits&taxon="+encodeURIComponent(taxon));
+      trait_link.textContent = "Traits";
+      var links = document.createElement('small');
+      links.append(rec_link, " | ", trait_link);
+      e.append(document.createElement('br'), links);
     })
     .catch(function (error) {
       //document.getElementById(this.renderDiv).innerHTML = "Error: " + error;
