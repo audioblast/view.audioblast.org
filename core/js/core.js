@@ -38,9 +38,8 @@ const viewAB = {
     this.loaded_defauts = true;
     viewAB.addPlugin(audiowaveformAB);
     viewAB.setTab('waveform0','annotations');
-    viewAB.addPlugin(tdscAB);
     viewAB.addPlugin(aciAB);
-    viewAB.setTab('aci2','chart');
+    viewAB.setTab('aci1','chart');
   },
   setFile: function(source, id){
     if (source == null || id == null) {return;}
