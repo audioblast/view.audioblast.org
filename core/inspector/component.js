@@ -17,17 +17,40 @@ function setInspectorActiveRecording() {
 }
 
 function augmentInspectorSource(source) {
-  source = source.replace(new RegExp('[.]', 'g'), '');
-  var req = fetch("https://api.audioblast.org/standalone/modules/module_info/?module="+source+"&output=nakedJSON")
+  //A recording's source is its module's mname, which need not be the name module_info takes, so every source module is looked at
+  var req = fetch("https://api.audioblast.org/standalone/modules/list_modules/?category=source&output=nakedJSON")
     .then(res => res.json())
-    .then(data => {
+    .then(modules => {
       viewAB.api_inc();
+      return Promise.all(modules.map(mod =>
+        fetch("https://api.audioblast.org/standalone/modules/module_info/?module="+encodeURIComponent(mod['name'])+"&output=nakedJSON")
+          .then(res => res.json())
+          .then(info => {
+            viewAB.api_inc();
+            return info;
+          })
+      ));
+    })
+    .then(infos => {
+      var data = infos.find(info => info['mname'] == source);
+      //With no such module, or no web address for it, the source stays as text
+      if (data === undefined || !/^https?:\/\/[^\/]/.test(data['url'])) {return;}
       var s = document.getElementById('inspector-source');
-      s.innerHTML = '';
+      s.replaceChildren();
       if (Object.keys(data).includes("logo_url")) {
-        s.innerHTML += "<span style='text-align:center;'><img src='"+data['logo_url']+"' width='150px' /></span><br/>";
+        var logo = document.createElement('img');
+        logo.setAttribute("src", data['logo_url']);
+        logo.setAttribute("width", "150px");
+        var centred = document.createElement('span');
+        centred.setAttribute("style", "text-align:center;");
+        centred.appendChild(logo);
+        s.append(centred, document.createElement('br'));
       }
-      s.innerHTML += "<a target='_blank' href='"+data['url']+"'>"+data['mname']+"</a>";
+      var link = document.createElement('a');
+      link.setAttribute("target", "_blank");
+      link.setAttribute("href", data['url']);
+      link.textContent = data['mname'];
+      s.append(link);
     })
     .catch(function (error) {
       //document.getElementById(this.renderDiv).innerHTML = "Error: " + error;
