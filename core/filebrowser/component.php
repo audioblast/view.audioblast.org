@@ -9,7 +9,7 @@
   <div id="zoom-control">
     <ul class="ulhoriz">
       <li>
-        <a onclick="window.open('https://audioblast.org/audioblast.php?source=<?php print($_GET['source']); ?>&id=<?php print($_GET['id']); ?>', '_self');">
+        <a href="<?php print(htmlspecialchars('https://audioblast.org/audioblast.php?source=' . rawurlencode($_GET['source']) . '&id=' . rawurlencode($_GET['id']), ENT_QUOTES)); ?>">
           <img class="audioblast-button" src="https://cdn.audioblast.org/audioblast_flash_white.png"
                alt="alphaBLAST! Search"/>
         </a>
